@@ -80,12 +80,11 @@ git clone YOUR_GITHUB_REPOSITORY_URL
 Configure your MySQL database in `application.properties`:
 
 # properties
-spring.datasource.url=jdbc:mysql://localhost:3306/smartcontactmanager
-spring.datasource.username=r**t
-spring.datasource.password=Saif***90.
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-
+1. spring.datasource.url=jdbc:mysql://localhost:3306/smartcontactmanager
+2. spring.datasource.username=r**t
+3. spring.datasource.password=Saif***90.
+4. spring.jpa.hibernate.ddl-auto=update
+5. spring.jpa.show-sql=true
 
 **Important:** Never upload your actual database password or other secret credentials to GitHub.
 ## 👨‍💻 Developer
