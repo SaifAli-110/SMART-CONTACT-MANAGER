@@ -1,0 +1,180 @@
+<!doctype html>
+<html
+        lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+        th:replace="base :: layout(~{::section})"
+>
+<head>
+    <meta charset="UTF-8"/>
+    <title>SignUp Page</title>
+    <link rel="stylesheet" href="signup.css"/>
+</head>
+<body>
+<section class="signup-form">
+    <div class="main-container-form">
+
+        <!-- left Form Registration discription -->
+        <div class="left-container">
+            <div class="info-content">
+
+                <span class="welcome-badge">WELCOME TO SMART CONTACT MANAGER - Registration Here</span>
+                <h1 class="welcome-heading">Manage Your Contacts <span>Smarter & Faster.</span></h1>
+                <p class="welcome-paragraph">
+                    Sign up to your account and manage all your contacts in one secure place.
+                    Access your saved contacts,
+                    update information, and stay organized anytime, anywhere.
+                </p>
+                <div class="signup-features">
+
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <div>
+                            <h4>Easy Contact Management</h4>
+                            <p>Manage all your contacts in one organized place.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <div>
+                            <h4>Secure Your Information</h4>
+                            <p>Your personal contact information stays protected.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <div>
+                            <h4>Quick & Smart Search</h4>
+                            <p>Find your saved contacts whenever you need them.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Form Registration -->
+        <div class="form-container">
+            <div th:if="${Successmessage}" class="alertMessages">
+                <span th:text="${Successmessage.content}"></span>
+            </div>
+
+            <div th:if="${Errormessage}" class="alertMess">
+                <span th:text="${Errormessage.content}"></span>
+            </div>
+
+            <img
+                    class="image-container"
+                    src="https://static.vecteezy.com/system/resources/thumbnails/038/941/148/small/3d-account-login-and-password-form-png.png"
+                    alt="sign-up"
+            />
+
+            <h3>Sign-Up Here!</h3>
+            <form
+                    novalidate
+                    th:action="@{/do_signup}"
+                    method="POST"
+                    th:object="${user}"
+                    enctype="multipart/form-data"
+            >
+                <label for="name_field">Name:</label>
+                <input
+                        th:classappend="${#fields.hasErrors('userName')} ? 'is-invalid' : ''"
+                        type="text"
+                        id="name_field"
+                        name="userName"
+                        placeholder="Enter name here"
+                        required
+                        th:value="${user.userName}"
+                />
+                <div
+                        class="invalid-feedback"
+                        th:each="e : ${#fields.errors('userName')}"
+                        th:text="${e}"
+                ></div>
+                <br/>
+
+                <label for="email_field">Email:</label>
+                <input
+                        th:classappend="${#fields.hasErrors('userEmail')} ? 'is-invalid' : ''"
+                        type="email"
+                        id="email_field"
+                        name="userEmail"
+                        placeholder="Enter email address"
+                        required
+                        th:value="${user.userEmail}"
+                />
+                <div
+                        class="invalid-feedback"
+                        th:each="e : ${#fields.errors('userEmail')}"
+                        th:text="${e}"
+                ></div>
+                <br/>
+
+                <label for="password_field">Password:</label>
+                <input
+                        th:classappend="${#fields.hasErrors('userPassword')} ? 'is-invalid' : ''"
+                        type="password"
+                        id="password_field"
+                        name="userPassword"
+                        placeholder="Enter password"
+                        required
+                        th:value="${user.userPassword}"
+                />
+                <div
+                        class="invalid-feedback"
+                        th:each="e : ${#fields.errors('userPassword')}"
+                        th:text="${e}"
+                ></div>
+                <br/>
+
+                <div
+                        class="field"
+                        style="
+                padding: 10px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                border: 1px solid lightgrey;
+                border-radius: 3px;
+              "
+                >
+                    <label for="userImage" style="margin-bottom: 15px"
+                    >User Image</label
+                    >
+                    <input
+                            type="file"
+                            id="userImage"
+                            name="userImage"
+                            accept="image/*"
+                            required
+                    />
+                </div>
+
+                <div class="feedback">
+                    <label for="password_field">Something About:</label>
+                    <textarea
+                            name="userAbout"
+                            th:value="${user.userAbout}"
+                            placeholder="Enter something about your self"
+                    ></textarea>
+                </div>
+
+                <div class="agreementCheckbox">
+                    <input type="checkbox" name="agreement" id="agreement"/>
+                    <label for="agreement">Accept terms of condition</label>
+                </div>
+
+                <div class="btn-main-container">
+                    <div class="button-wrapper">
+                        <button class="sign-up-btn" type="submit">sign-up</button>
+                    </div>
+                </div>
+
+                <p>
+                    you have an already account?
+                    <a class="link" th:href="@{/signin}">Sign-In</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</section>
+</body>
+</html>

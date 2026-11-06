@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="normal/base :: layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>About-Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<section>
+    <h2 class="greeting-heading">Welcome, <span th:text="${user.userName}"></span></h2>
+    <div class="content-data">Good Afternoon welcome to my User DashBoard
+
+        <!-- items long card 1 -->
+        <div class="content-items">
+            <div class="card-heading"><h4 class="cont-he">Smart Contact Manager Summary</h4></div>
+            <div class="card-paragraph"><p class="cont-par">A smart contact manager is a secure, web-based digital platform that centralizes personal and professional contact data into one accessible location.</p></div>
+            <div class="card-paragraph"><p class="cont-par">It allows users to perform full CRUD operations (add, view, update, and delete) along with intelligent search and filtering.</p></div>
+            <div class="card-paragraph"><p class="cont-par">Built using modern frameworks like Spring Boot and MySQL, it ensures data security through robust user authentication and role-based access.</p></div>
+            <div class="card-paragraph"><p class="cont-par">The responsive user interface enables seamless organization, real-time synchronization, and efficient communication across all devices.</p></div>
+        </div>
+
+        <!-- items card short container 1 -->
+        <div class="cont-items-container">
+            <div class="cont-items">
+                <div class="card-heading"><h4 class="cont-he"><i class="fas fa-home"></i> Home Page</h4></div>
+                <div class="card-paragraph"><p class="cont-par">Smart Contact Manager completely transformed how our sales team tracks client interactions. It's clean, fast, and bulletproof.</p></div>
+                <div class="card-anchor">
+                    <a href="#" th:href="@{/api/users/dashboard}">Home ></a>
+                </div>
+            </div>
+            <div class="cont-items">
+                <h4 class="cont-he"><i class="fas fa-users"></i> View Contact</h4>
+                <p class="cont-par">Click on 'View Contact' to easily view all your saved contacts.</p>
+                <div class="anchor-div">
+                    <a href="#" th:href="@{/api/users/view-contact/0}">View Contact ></a>
+                </div>
+            </div>
+            <div class="cont-items">
+                <h4 class="cont-he"><i class="fas fa-user-plus"> </i> Add Contact</h4>
+                <p class="cont-par">Click on 'Add Contact' to easily add your contacts.</p>
+                <div class="anchor-div">
+                    <a href="#" th:href="@{/api/users/add-contact}">Add Contacts ></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- items card short container 2 -->
+        <div class="cont-items-container">
+            <div class="cont-items">
+                <div class="card-heading"><h4 class="cont-he"><i class="fas fa-user"></i> Your Profile</h4></div>
+                <div class="card-paragraph"><p class="cont-par">you can view your details by clicking on your profile page. such as your name, your contact number, and your email address etc.</p></div>
+                <div class="card-anchor">
+                    <a href="#"  th:href="@{/api/users/profile}">Your Profile ></a>
+                </div>
+            </div>
+            <div class="cont-items">
+                <h4 class="cont-he"><i class="fas fa-cog"></i> Setting</h4>
+                <p class="cont-par">Click on 'Setting' to easily change all your saved contacts, theme (like dark, and light).</p>
+                <div class="anchor-div">
+                    <a href="#">Setting ></a>
+                </div>
+            </div>
+            <div class="cont-items">
+                <h4 class="cont-he"><i class="fas fa-question-circle"></i> Help</h4>
+                <p class="cont-par">Clicking Help will provide you with a wealth of information. What's good and what's not so good about this smart contact manager?</p>
+                <div class="anchor-div">
+                    <a href="#" th:href="@{/api/users/Help}">Help ></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="base :: layout(~{::section})">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Contact Manager</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+
+<section>
+
+    <!-- Hero Banner -->
+    <div class="banner">
+        <div class="banner-overlay"></div>
+
+        <div class="heading-container">
+            <span class="hero-badge">SMARTER CONTACT MANAGEMENT</span>
+
+            <h1 class="heading-1">
+                Smart Contact Manager
+            </h1>
+
+            <p class="banner-paragraph">
+                Organize your connections, manage your contacts, and
+                keep your important information in one secure place.
+                Make contact management simple, smart, and efficient.
+            </p>
+
+            <div class="banner-buttons">
+                <a th:href="@{/signup}" class="get-start-btn">
+                    Get Started <span>&rarr;</span>
+                </a>
+
+                <a href="#about-project" class="learn-more-btn">
+                    Explore Features
+                </a>
+            </div>
+
+            <div class="hero-note">
+                <span class="check-icon">&#10003;</span>
+                Simple. Secure. Organized.
+            </div>
+        </div>
+    </div>
+
+
+    <!-- About Project Section -->
+    <div class="project-section" id="about-project">
+
+        <div class="section-heading">
+            <span class="section-label">ABOUT OUR PROJECT</span>
+
+            <h2>A Better Way to Manage Your Contacts</h2>
+
+            <p>
+                Smart Contact Manager is a web-based application designed
+                to help users store, organize, search, and manage their
+                personal and professional contacts effortlessly.
+                With a clean interface and secure user authentication,
+                managing your connections has never been easier.
+            </p>
+        </div>
+
+
+        <!-- Feature Cards -->
+        <div class="feature-container">
+
+            <div class="feature-card">
+                <div class="feature-icon purple">&#128100;</div>
+
+                <h3>Easy Contact Management</h3>
+
+                <p>
+                    Add, update, view, and delete your contacts in one
+                    convenient place. Keep names, phone numbers,
+                    emails, and other details organized.
+                </p>
+            </div>
+
+
+            <div class="feature-card">
+                <div class="feature-icon blue">&#128269;</div>
+
+                <h3>Quick & Easy Access</h3>
+
+                <p>
+                    Find and manage your saved contacts efficiently.
+                    Navigate through your contact list with a simple,
+                    user-friendly interface.
+                </p>
+            </div>
+
+
+            <div class="feature-card">
+                <div class="feature-icon green">&#128274;</div>
+
+                <h3>Secure User Account</h3>
+
+                <p>
+                    Access your personal contact management space
+                    through user authentication and keep your
+                    contact information organized by account.
+                </p>
+            </div>
+
+
+            <div class="feature-card">
+                <div class="feature-icon orange">&#128196;</div>
+
+                <h3>Personalized Profiles</h3>
+
+                <p>
+                    Manage your profile and maintain useful contact
+                    details, including profile images and descriptions,
+                    in one organized application.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Project Technology Section -->
+    <div class="technology-section">
+
+        <div class="technology-content">
+            <span class="section-label">BUILT WITH MODERN TECHNOLOGY</span>
+
+            <h2>Powerful Technology Behind the Simplicity</h2>
+
+            <p>
+                This project combines a responsive frontend with a
+                Java-based backend to deliver a practical contact
+                management experience.
+            </p>
+        </div>
+
+        <div class="technology-list">
+            <span>Java</span>
+            <span>Spring Boot</span>
+            <span>Spring MVC</span>
+            <span>Spring Security</span>
+            <span>Authentication / Authorization</span>
+            <span>Thymeleaf</span>
+            <span>HTML & CSS</span>
+            <span>JavaScript</span>
+            <span>Bootstrap</span>
+            <span>SQL</span>
+            <span>MYSQL</span>
+            <span>JDBC / Hibernate/ORM / JPA</span>
+
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="normal/base :: layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>th:text="${title}"</title>
+</head>
+<body>
+<!--   -->
+<section>
+    <div class="form-containers">
+
+        <div th:if="${Successmessage}" class="alertMessages">
+            <span th:text="${Successmessage.content}"></span>
+        </div>
+
+        <div th:if="${Errormessage}" class="alertMess">
+            <span th:text="${Errormessage.content}"></span>
+        </div>
+
+        <h2>Add Contact</h2>
+        <form
+                novalidate
+                class="contact-form"
+                th:action="@{/api/users/add-contact}"
+                th:object="${contact}"
+                method="POST"
+                enctype="multipart/form-data"
+        >
+            <div class="input-div">
+                <div class="field">
+                    <label for="firstName">First Name</label>
+                    <input
+                            th:classappend="${#fields.hasErrors('firstName')} ? 'is-invalid' : ''"
+                            type="text"
+                            id="firstName"
+                            name="firstName"
+                            placeholder="First name"
+                            required
+                            th:value="${contact.firstName}"
+                    />
+                    <div class="invalid-feedback" th:each="e : ${#fields.errors('firstName')}" th:text="${e}"></div>
+                </div>
+
+                <div class="field">
+                    <label for="lastName">Last Name</label>
+                    <input
+                            th:classappend="${#fields.hasErrors('lastName')} ? 'is-invalid' : ''"
+                            type="text"
+                            id="lastName"
+                            name="lastName"
+                            placeholder="Last name"
+                            required
+                            th:value="${contact.lastName}"
+                    />
+                    <div class="invalid-feedback" th:each="e : ${#fields.errors('lastName')}" th:text="${e}"></div>
+                </div>
+            </div>
+
+            <div class="input-div">
+                <div class="field">
+                    <label for="contactEmail">Email</label>
+                    <input
+                            th:classappend="${#fields.hasErrors('contactEmail')} ? 'is-invalid' : ''"
+                            type="email"
+                            id="contactEmail"
+                            name="contactEmail"
+                            placeholder="Enter email address"
+                            required
+                            th:value="${contact.contactEmail}"
+                    />
+                    <div class="invalid-feedback" th:each="e : ${#fields.errors('contactEmail')}" th:text="${e}"></div>
+                </div>
+
+                <div class="field">
+                    <label for="contactPhone">Phone</label>
+                    <input
+                            th:classappend="${#fields.hasErrors('contactPhone')} ? 'is-invalid' : ''"
+                            type="tel"
+                            id="contactPhone"
+                            name="contactPhone"
+                            placeholder="Enter phone"
+                            required
+                            th:value="${contact.contactPhone}"
+                    />
+                    <div class="invalid-feedback" th:each="e : ${#fields.errors('contactPhone')}" th:text="${e}"></div>
+                </div>
+            </div>
+
+            <div class="input-div">
+                <div class="field">
+                    <label for="work">Work</label>
+                    <input
+                            th:classappend="${#fields.hasErrors('work')} ? 'is-invalid' : ''"
+                            type="text"
+                            id="work"
+                            name="work"
+                            placeholder="Enter work"
+                            required
+                            th:value="${contact.work}"
+                    />
+                    <div class="invalid-feedback" th:each="e : ${#fields.errors('work')}" th:text="${e}"></div>
+                </div>
+
+                <div class="field">
+                    <label for="contactImage">Contact Image</label>
+                    <input
+                            type="file"
+                            id="contactImage"
+                            name="contactImage"
+                            accept="image/*"
+                            required
+                    />
+                </div>
+            </div>
+
+            <div class="field description-field">
+                <label for="contactDescription">Description</label>
+
+                <textarea
+                        id="contactDescription"
+                        name="contactDescription"
+                        placeholder="something about your contact..."
+                ></textarea>
+            </div>
+
+            <div class="button-dev">
+                <button type="submit">Add Contact</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+</body>
+</html>

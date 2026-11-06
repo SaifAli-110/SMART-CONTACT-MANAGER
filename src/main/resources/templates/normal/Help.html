@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base :: layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>th:text="${title}"</title>
+
+<!--    font awesome link to fetch the icon from the website-->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+<section class="help-container">
+    <div class="help-header">
+        <div class="help-icon">
+            <i class="fa-solid fa-circle-question"></i>
+        </div>
+
+        <h1>Help & Support</h1>
+
+        <p>
+            Welcome to Smart Contact Manager!
+            Find helpful information to manage your contacts easily and securely.
+        </p>
+    </div>
+
+    <!-- Important Message -->
+    <div class="important-message">
+        <i class="fa-solid fa-circle-info"></i>
+
+        <div>
+            <h3>Important Information</h3>
+            <p>
+                Keep your account information secure. Always log out after using
+                your account on a shared device. Make sure your contact details
+                are correct and up to date.
+            </p>
+        </div>
+    </div>
+
+    <!-- Help Cards -->
+    <div class="help-grid">
+        <div class="help-card">
+            <div class="card-icon blue">
+                <i class="fa-solid fa-address-book"></i>
+            </div>
+            <h3>Manage Your Contacts</h3>
+            <p>
+                Add new contacts by entering their name, phone number,
+                email address and other details. You can also update or
+                delete contacts whenever necessary.
+            </p>
+        </div>
+        <div class="help-card">
+            <div class="card-icon green">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <h3>Search Contacts</h3>
+            <p>
+                Use the search feature to find a saved contact quickly.
+                Enter a name or another supported search detail to
+                locate the information you need.
+            </p>
+        </div>
+        <div class="help-card">
+            <div class="card-icon purple">
+                <i class="fa-solid fa-user-gear"></i>
+            </div>
+            <h3>Manage Your Profile</h3>
+            <p>
+                Keep your profile information updated. Check your account
+                details regularly and use a strong password to protect
+                your account.
+            </p>
+        </div>
+
+        <div class="help-card">
+            <div class="card-icon orange">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h3>Security & Privacy</h3>
+            <p>
+                Your contacts may contain personal information. Do not share
+                your login credentials, and avoid accessing your account
+                on untrusted devices.
+            </p>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-section">
+        <h2>
+            <i class="fa-solid fa-comments"></i>
+            Frequently Asked Questions
+        </h2>
+
+        <details>
+            <summary>How can I add a new contact?</summary>
+            <p>
+                Open the Add Contacts page, enter the required information,
+                and submit the form to save the contact.
+            </p>
+        </details>
+
+        <details>
+            <summary>Can I edit or delete a contact?</summary>
+            <p>
+                Yes. Open your saved contacts and use the available edit
+                or delete options, if provided.
+            </p>
+        </details>
+
+        <details>
+            <summary>What should I do if I cannot log in?</summary>
+            <p>
+                Check your email or username and password. If the problem
+                continues, contact the application administrator.
+            </p>
+        </details>
+
+        <details>
+            <summary>How can I keep my account secure?</summary>
+            <p>
+                Use a strong password, never share your credentials,
+                and log out when you finish using a shared device.
+            </p>
+        </details>
+    </div>
+
+    <!-- Support Section -->
+    <div class="support-box">
+        <i class="fa-solid fa-headset"></i>
+        <h2>Still Need Help?</h2>
+        <p>
+            If you experience any issues while using Smart Contact Manager,
+            please contact our support team or application administrator.
+        </p>
+
+        <a th:href="@{/api/users/contact-us}" class="support-btn">
+            <i class="fa-solid fa-envelope"></i>
+            Contact Support
+        </a>
+    </div>
+</section>
+</body>
+</html>

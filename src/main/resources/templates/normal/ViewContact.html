@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base :: layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>th:text="${title}"</title>
+</head>
+<body>
+<section>
+    <div class="table-container">
+        <h2>My Contacts</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Contact ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Contact Email</th>
+                <th>Contact Phone</th>
+                <th>Delete</th>
+                <th>Update</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="c : ${contact}">
+
+                <td th:text="${c.contactId}"></td>
+
+                <td>
+                    <div class="contact-info">
+
+                        <a href="#" th:href="@{'/api/users/'+${c.contactId}+'/contact'}">
+                            <img class="MyProfile_Picture"
+                                 th:if="${c.contactImageUrl != null
+                                and !#strings.isEmpty(c.contactImageUrl)}"
+                                 th:src="@{'/images/' + ${c.contactImageUrl}}"
+                                 alt="profile_picture">
+                        </a>
+                        <!-- 2. for first name to print -->
+                        <span th:text="${c.firstName}"></span>
+                    </div>
+                </td>
+                <!-- 3. for last name to print -->
+                <td th:text="${c.lastName}"></td>
+
+                <!--               4. for Email_Id to print-->
+                <td>
+                    <span th:text="${c.contactEmail}"></span>
+                </td>
+
+                <td th:text="${c.contactPhone}"></td>
+
+                <!--                5. delete a contact    -->
+                <td>
+                    <form th:action="@{/api/users/delete-contact/{id}(id=${c.contactId})}"
+                          method="post"
+                          onsubmit="return confirm('Are you sure you want to delete this contact?');">
+                        <button type="submit" class="delete_btn">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+
+                <!--                6. update a contact        -->
+                <td>
+                    <form th:action="@{/api/users/update-contact/{id}(id=${c.contactId})}"
+                          method="get">
+
+                        <button type="submit" class="update_btn">
+                            Update
+                        </button>
+
+                    </form>
+                </td>
+
+                <!--           7. empty - message-->
+            <tr class="empty_message" th:if="${#lists.isEmpty(contacts)}">
+                <td colspan="7" class="empty-message"
+                    th:text="${message}">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation example" th:if="${totalPages > 0}">
+            <ul class="pagination">
+
+                <!-- Previous Button -->
+                <th:block th:if="${currentPage > 0}">
+                    <li class="page-item">
+                        <a class="page-link" th:href="@{'/api/users/view-contact/' + ${currentPage - 1}}">Previous</a>
+                    </li>
+                </th:block>
+
+                <!-- Page Numbers Loop -->
+                <tr th:each="i : ${#numbers.sequence(1, totalPages)}">
+                    <li class="page-item" th:classappend="${currentPage == i - 1} ? 'active' : ''">
+                        <a class="page-link" th:href="@{'/api/users/view-contact/' + ${i - 1}}" th:text="${i}">1</a>
+                    </li>
+                </tr>
+
+                <!-- Next Button -->
+                <th:block th:if="${currentPage + 1 < totalPages}">
+                    <li class="page-item">
+                        <a class="page-link" th:href="@{'/api/users/view-contact/' + ${currentPage + 1}}">Next</a>
+                    </li>
+                </th:block>
+
+            </ul>
+        </nav>
+    </div>
+</section>
+
+</body>
+</html>

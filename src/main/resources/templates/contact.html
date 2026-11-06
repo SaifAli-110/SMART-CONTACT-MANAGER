@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base :: layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>Contacts</title>
+</head>
+<body>
+
+<section>
+
+    <div class="Contact-Banner">
+        <div class="heading-container">
+            <span class="hero-badge">CONTACT-US SMARTER CONTACT MANAGEMENT </span>
+
+            <h1 class="heading-1">
+                Get in Touch
+            </h1>
+
+            <p class="banner-paragraph">
+                Drop us a message below and let's keep your network organized together.
+                Reach out to our team, and we’ll get back to you promptly.
+            </p>
+        </div>
+    </div>
+
+    <div Class="Contact-Banner-Heading">
+        <h1 class="heading-2">For Queries, Feedback and Assistance</h1>
+        <p>We are here to answer all the queries you might have. Please select the segment we can help you with.</p>
+    </div>
+
+    <div class="Main-Container">
+
+        <!-- location, address container -->
+        <div class="location-form-container">
+            <h3 class="contact-heading">Contact Us</h3>
+            <div class="location-container">
+                <h3>India Office</h3>
+                <p>Abul Fazal inclive, Jamia Nagar Okhla</p>
+            </div>
+            <div class="location-container">
+                <h3>Delivery Center (India)</h3>
+                <p>Gali No. 5, abul fazal, okhla, New Delhi</p>
+                <p>Gali No. 2, batla house, okhla, New Delhi</p>
+                <p>Sector 2, noida, Uttar Pradesh</p>
+            </div>
+            <div class="location-container">
+                <h3>Contact Support</h3>
+                <a href="#" style="text-decoration: none">
+                    <i class="fas fa-phone-alt"></i> +91 7455005247</a> <br>
+                <a href="#" style="text-decoration: none">
+                    <i class="fa-solid fa-envelope"></i> saifali7455.110@gmail.com</a>
+            </div>
+            <div class="location-containers">
+                <h3 class="carrer-op">for careers opportunity</h3>
+                <a href="#" class="anchor-tag">Apply here</a>
+            </div>
+        </div>
+
+        <!-- contact form container -->
+        <div class="contact-form-container">
+            <div class="form-container">
+                <h2>Send Us a Message</h2>
+
+                <!-- Success Message -->
+                <div th:if="${SuccessMessage}" class="alertMessages">
+                    <span th:text="${SuccessMessage.content}"></span>
+                </div>
+
+                <!--                Error Message -->
+                <div th:if="${ErrorMessage}" class="alertMess">
+                    <span th:text="${ErrorMessage.content}"></span>
+                </div>
+
+                <!-- Form bound to the ContactMessage object -->
+                <form novalidate th:action="@{/contact}" th:object="${contactMessage}" method="POST">
+
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input th:classappend="${#fields.hasErrors('name')} ? 'is-invalid' : ''"
+                               type="text"
+                               id="name"
+                               th:field="*{name}"
+                               placeholder="Your Full Name"
+                               th:value="${contactMessage.name}"
+                               required/>
+
+                        <div class="invalid-feedback"
+                             th:each="e : ${#fields.errors('name')}"
+                             th:text="${e}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input th:classappend="${#fields.hasErrors('email')} ? 'is-invalid' : ''"
+                               type="email"
+                               id="email"
+                               th:field="*{email}"
+                               placeholder="your.email@example.com"
+                               th:value="${contactMessage.email}"
+                               required/>
+                        <div class="invalid-feedback"
+                             th:each="e : ${#fields.errors('email')}"
+                             th:text="${e}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input th:classappend="${#fields.hasErrors('subject')} ? 'is-invalid' : ''"
+                               type="text"
+                               id="subject"
+                               th:field="*{subject}"
+                               placeholder="Topic of your message"
+                               th:value="${contactMessage.subject}"
+                               required/>
+
+                        <div class="invalid-feedback"
+                             th:each="e : ${#fields.errors('subject')}"
+                             th:text="${e}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message"
+                                  th:field="*{message}"
+                                  rows="5" maxlength="2000"
+                                  placeholder="Type your message here..."
+                                  th:value="${contactMessage.message}"
+                                  required></textarea>
+                        <small class="hint">Max 2000 characters</small>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Submit Message</button>
+                    <p class="contact-message">We're committed to your privacy.
+                        Smart Contact uses the information you provide to us to contact you about our relevant content,
+                        products, and services.
+                        For more information, check out our.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

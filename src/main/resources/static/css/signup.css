@@ -1,0 +1,181 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+
+h3 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 400;
+    color: #007BFF;
+}
+
+.form-container {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #007BFF;
+    transition: border-color 0.3s ease;
+}
+
+.feedback {
+    display: flex;
+    flex-direction: column;
+}
+
+textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    outline: none;
+    resize: vertical;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+textarea:focus {
+    border-color: #007BFF;
+}
+
+.btn-main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center (requires height) */
+}
+
+/* sign up button */
+button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #3597ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #0056b3;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button:active {
+    scale: 1.05;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+/* reset button */
+.resetButton {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #fe4444;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.resetButton:hover {
+    cursor: pointer;
+    color: white;
+    background-color: #b30000;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.resetButton:active {
+    scale: 1.05;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+p {
+    margin-top: 5px;
+    text-align: center;
+}
+
+.link {
+    text-decoration: none;
+}
+
+/* --------------------------------------------------
+       MEDIA QUERIES
+       -------------------------------------------------- */
+
+/* 1. Tablets and Small Laptops (min-width: 600px) */
+@media screen and (min-width: 600px) {
+    .form-container {
+        padding: 32px; /* Extra internal spacing on tablet screens */
+        max-width: 440px;
+    }
+
+    button {
+        width: auto; /* Allow natural button width */
+        padding: 10px 24px;
+    }
+}
+
+/* 2. Large Desktop Screens (min-width: 1024px) */
+@media screen and (min-width: 1024px) {
+    .form-container {
+        max-width: 480px; /* Expanded card width for large displays */
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); /* Slightly stronger shadow */
+    }
+}
+
+/* 3. Short Screens / Landscape Mode (max-height: 500px) */
+@media screen and (max-height: 500px) {
+    body {
+        align-items: flex-start; /* Switch from vertical centering to top alignment */
+        padding-top: 24px;
+        padding-bottom: 24px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .btn-main-container {
+        flex-direction: column; /* Buttons ko columnwise alignment mei lane ke liye */
+    }
+
+    .btn-main-container div {
+        width: 100%; /* Dono inner divs ko full width dene ke liye */
+    }
+
+    .btn-main-container button {
+        width: 100%; /* Mobile par dono buttons full-width touch friendly dikhenge */
+    }
+}

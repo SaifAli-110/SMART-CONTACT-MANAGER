@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="base :: layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>sign-in</title>
+</head>
+<body>
+<section class="signup-form">
+
+<!--    main container -->
+    <div class="main-container-form">
+
+<!--    left container-->
+        <div class="left-container">
+            <div class="info-content">
+                <span class="welcome-badge">WELCOME BACK TO SMART CONTACT MANAGER - Login Here</span>
+                <h1 class="welcome-heading">Manage Your Contacts <span>Smarter & Faster.</span></h1>
+                <p class="welcome-paragraph">
+                    Sign in to your account and manage all your contacts in one secure place.
+                    Access your saved contacts,
+                    update information, and stay organized anytime, anywhere.
+                </p>
+                <div class="signup-features">
+
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <div>
+                            <h4>Easy Contact Management</h4>
+                            <p>Manage all your contacts in one organized place.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <div>
+                            <h4>Secure Your Information</h4>
+                            <p>Your personal contact information stays protected.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <div>
+                            <h4>Quick & Smart Search</h4>
+                            <p>Find your saved contacts whenever you need them.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!--    Right Container-->
+    <div class="form-container">
+<!--        message for success or error    -->
+        <div class="alert alert-danger" th:if="${param.error}">
+            Invalid username and password.
+        </div>
+        <div class="alert alertMessages" th:if="${param.logout}">
+            you have been logged out.
+        </div>
+        <img class="image-container"
+             src="https://static.vecteezy.com/system/resources/thumbnails/038/941/148/small/3d-account-login-and-password-form-png.png"
+             alt="sign-up">
+        <h3>Sign-In Here!</h3>
+
+        <form th:action="@{/signin}" method="POST">
+            <label for="email_field">Email:</label>
+            <input
+                    type="email"
+                    id="email_field"
+                    name="userEmail"
+                    placeholder="Enter email address"
+                    required
+            /><br/>
+
+            <label for="password_field">Password:</label>
+            <input
+                    type="password"
+                    id="password_field"
+                    name="userPassword"
+                    placeholder="Enter password"
+                    required
+            /><br/>
+            <div class="btn-main-container">
+                <div class="button-wrapper">
+                    <button class="sign-up-btn" type="submit">sign-in</button>
+                </div>
+            </div>
+            <p>you have not an any account? <a class="link" th:href="@{/signup}">Sign-Up</a></p>
+        </form>
+    </div>
+
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="normal/base :: layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>contact details</title>
+</head>
+<body>
+
+<section class="profile-section">
+    <div class="profile-container">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <h2>Contact Details</h2>
+            <p>Manage and view your personal contact information</p>
+        </div>
+        <!-- Profile Card -->
+        <div class="profile-card">
+            <!-- Profile Image -->
+            <div class="profile-image-container">
+                <img th:if="${contact.contactImageUrl != null
+                    and !#strings.isEmpty(contact.contactImageUrl)}"
+                     th:src="@{'/images/' + ${contact.contactImageUrl}}"
+                     alt="Profile Image"
+                     class="profile-image">
+
+                <img th:unless="${contact.contactImageUrl != null
+                    and !#strings.isEmpty(contact.contactImageUrl)}"
+                     th:src="@{/images/contacts.png}"
+                     alt="Default Profile Image"
+                     class="profile-image">
+            </div>
+            <!-- UserName -->
+            <p class="profile-role">Contact of Smart Contact Manager</p>
+            <hr>
+            <!-- User Details -->
+            <div class="profile-details">
+
+                <div class="detail-item">
+                    <span class="detail-label">Contact Id</span>
+                    <p th:text="${contact.contactId}">Contact Id</p>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">First Name</span>
+                    <p th:text="${contact.firstName}">First Name</p>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Last Name</span>
+                    <p th:text="${contact.lastName}">Last Name</p>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Email Address</span>
+                    <p th:text="${contact.contactEmail}">contact@example.com</p>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Phone Number</span>
+                    <p th:text="${contact.contactPhone}">+91 7558844558</p>
+                </div>
+
+            </div>
+            <!-- Profile Actions -->
+            <div class="profile-actions">
+                <a th:href="@{/api/users/view-contact/0}"
+                   class="profile-btn back-btn">
+                    Back to View Contact
+                </a>
+                <a th:href="@{/api/users/update-contact/{id}(id=${contact.contactId})}"
+                   class="profile-btn edit-btn">
+                    Update Contact
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

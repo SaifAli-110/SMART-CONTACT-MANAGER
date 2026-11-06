@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="normal/base :: layout(~{::section})">
+
+<head>
+    <meta charset="UTF-8">
+    <title>th:text="${title}"</title>
+</head>
+
+<body>
+<section>
+
+    <div class="form-containers">
+
+        <div th:if="${Errormessage}" class="alertMess">
+            <span th:text="${Errormessage.content}"></span>
+        </div>
+
+        <h2>Update Contact</h2>
+
+        <form class="contact-form"
+              th:action="@{/api/users/update-contact/{id}(id=${contact.contactId})}"
+              th:object="${contact}"
+              method="POST"
+              enctype="multipart/form-data">
+
+            <div class="input-div">
+                <div class="field">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName"
+                           th:field="*{firstName}" required>
+                </div>
+
+                <div class="field">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName"
+                           th:field="*{lastName}" required>
+                </div>
+            </div>
+
+            <div class="input-div">
+                <div class="field">
+                    <label for="contactEmail">Email</label>
+                    <input type="email" id="contactEmail"
+                           th:field="*{contactEmail}" required>
+                </div>
+
+                <div class="field">
+                    <label for="contactPhone">Phone</label>
+                    <input type="tel" id="contactPhone"
+                           th:field="*{contactPhone}" required>
+                </div>
+            </div>
+
+            <div class="input-div">
+                <div class="field">
+                    <label for="work">Work</label>
+                    <input type="text" id="work"
+                           th:field="*{work}">
+                </div>
+
+                <div class="field">
+                    <label for="contactImage">Change Image</label>
+
+                    <div th:if="${contact.contactImageUrl != null
+                         and !#strings.isEmpty(contact.contactImageUrl)}">
+                        <img th:src="@{'/images/' + ${contact.contactImageUrl}}"
+                             alt="Current contact image"
+                             style="width:80px;height:80px;
+                                    object-fit:cover;border-radius:50%;">
+                    </div>
+
+                    <input type="file"
+                           id="contactImage"
+                           name="contactImage"
+                           accept="image/*">
+                    <small>Leave empty to keep the current image.</small>
+                </div>
+            </div>
+
+            <div class="field description-field">
+                <label for="contactDescription">Description</label>
+                <textarea id="contactDescription"
+                          th:field="*{contactDescription}"
+                          placeholder="Something about your contact..."
+                          rows="4"></textarea>
+            </div>
+
+            <div class="button-dev">
+                <button type="submit">Save Changes</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+</body>
+</html>

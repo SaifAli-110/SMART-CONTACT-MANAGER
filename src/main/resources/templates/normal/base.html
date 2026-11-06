@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--  link CSS file-->
+  <link rel="stylesheet" th:href="@{/css/style.css}" href="../css/style.css"/>
+  <title th:text="${title}">Base package</title>
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+
+<!--This is navbar starting-->
+<nav class="navbar-con">
+  <div class="nav-container">
+
+    <!-- Brand Logo -->
+    <a href="#" th:href="@{/api/users/dashboard}"  class="brand-logo">
+      <i class="fa-solid fa-address-book"></i> SmartContact
+    </a>
+
+    <!-- Mobile Toggle Button -->
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <!-- Navigation Links -->
+    <ul class="nav-menu">
+      <li class="nav-item">
+        <a th:href="@{/api/users/dashboard}" class="nav-link active">
+          <i class="fa-solid fa-house"></i> Home
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a th:href="@{/api/users/contact-us}" class="nav-link">
+          <i class="fa-solid fa-user-plus"></i> Contact-Us
+        </a>
+      </li>
+
+<!--      for sign-in-->
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/api/users/profile}">
+          <i class="fa-solid fa-user-lock"></i> <span th:text="${user.userName}"></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</nav>
+<!--This is navbar Ending-->
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <span onclick="toggleSideBar()" class="close-btn">&times;</span>
+    <a href="#" th:href="@{/api/users/dashboard}"
+          class="sidebarItem"
+          th:classappend="${currentUrl == '/api/users/dashboard'} ? ' active' : ''">
+      <i  class="fas fa-home"></i> Home
+    </a>
+    <a href="#" th:href="@{/api/users/view-contact/0}"  class="sidebarItem"><i class="fas fa-users"></i> View Contacts</a>
+    <a href="#" th:href="@{/api/users/add-contact}" class="sidebarItem"><i class="fas fa-user-plus"></i> Add Contacts</a>
+    <a href="#" th:href="@{/api/users/profile}" class="sidebarItem"><i class="fas fa-user"></i> Your Profile</a>
+    <a href="#" class="sidebarItem"><i class="fas fa-cog"></i> Setting</a>
+    <a href="#" th:href="@{/api/users/Help}" class="sidebarItem"><i class="fas fa-question-circle"></i> Help</a>
+    <a href="#" th:href="@{/logout}" class="sidebarItem"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </div>
+
+  <!-- Content Area -->
+  <div class="content">
+    <i onclick="toggleSideBar()" class="fas fa-bars"></i>
+    <div th:replace="${content}"></div>
+  </div>
+
+<!--this is footer-->
+<!--<footer class="footer">-->
+<!--  <div class="footer-container">-->
+<!--    <div class="footer-content">-->
+<!--      &lt;!&ndash; About &ndash;&gt;-->
+<!--      <div class="footer-info">-->
+<!--        <h5>-->
+<!--          <i class="fa-solid fa-address-book"></i>-->
+<!--          Smart Contact Manager-->
+<!--        </h5>-->
+<!--        <p>-->
+<!--          A simple and secure solution for managing-->
+<!--          your contacts efficiently.-->
+<!--        </p>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; Links &ndash;&gt;-->
+<!--      <div class="footer-links">-->
+<!--        <a href="/">Home</a>-->
+<!--        <a th:href="@{/about}">About Us</a>-->
+<!--        <a th:href="@{/contact}">Contact</a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <hr>-->
+<!--    <p class="copyright">-->
+<!--      © 2026 Smart Contact Manager.-->
+<!--      All Rights Reserved.-->
+<!--    </p>-->
+<!--    <p class="copyrights">saifali7455.110@gmail.com | Phone: +91 7455005247 | location: Delhi, India</p>-->
+<!--  </div>-->
+<!--</footer>-->
+
+<!--link JavaScript file in the base.html file-->
+<script th:src="@{/js/script.js}" src="../js/script.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base :: layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>th:text="${title}"</title>
+</head>
+<body>
+<section class="profile-section">
+    <div class="profile-container">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <h2>My Profile</h2>
+            <p>Manage and view your personal information</p>
+        </div>
+        <!-- Profile Card -->
+        <div class="profile-card">
+            <!-- Profile Image -->
+            <div class="profile-image-container">
+                <img th:if="${user.userImageUrl != null
+                    and !#strings.isEmpty(user.userImageUrl)}"
+                     th:src="@{'/images/' + ${user.userImageUrl}}"
+                     alt="Profile Image"
+                     class="profile-image">
+
+                <img th:unless="${user.userImageUrl != null
+                    and !#strings.isEmpty(user.userImageUrl)}"
+                     th:src="@{/images/contacts.png}"
+                     alt="Default Profile Image"
+                     class="profile-image">
+            </div>
+            <!-- UserName -->
+            <h2 class="profile-name"
+                th:text="${user.userName}">
+                User Name
+            </h2>
+            <p class="profile-role">Smart Contact Manager User</p>
+            <hr>
+            <!-- User Details -->
+            <div class="profile-details">
+                <div class="detail-item">
+                    <span class="detail-label">Full Name</span>
+                    <p th:text="${user.userName}">User Name</p>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Email Address</span>
+                    <p th:text="${user.userEmail}">user@example.com</p>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Role</span>
+                    <p th:text="${user.userRole}">user role</p>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Account Active</span>
+                    <p th:text="${user.enable}">Account Active</p>
+                </div>
+
+
+                <div class="detail-item">
+                    <span class="detail-label">About Me</span>
+                    <p class="about-text"
+                       th:text="${#strings.isEmpty(user.userAbout)
+                       ? 'No about information added yet.'
+                       : user.userAbout}">
+                        About the user
+                    </p>
+                </div>
+            </div>
+            <!-- Profile Actions -->
+            <div class="profile-actions">
+                <a th:href="@{/api/users/dashboard}"
+                   class="profile-btn back-btn">
+                    Back to Dashboard
+                </a>
+
+                <a th:href="@{/api/users/update-profile}"
+                   class="profile-btn edit-btn">
+                    Edit Profile
+                </a>
+
+                <a href="#" th:href="@{/logout}"
+                   class="profile-btn edit-btn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
