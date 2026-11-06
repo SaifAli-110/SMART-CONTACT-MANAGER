@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>in.SaifProgramming</groupId>
-    <artifactId>Smart-Contact-Manager</artifactId>
+    <artifactId>SmartContactManager</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>SmartContactManager</name>
     <description>SmartContactManager</description>
