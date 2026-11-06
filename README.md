@@ -99,18 +99,17 @@ This project is created for learning and educational purposes and for personal u
 ## 📸 Application Screenshots
 
 ### 🏠 Home Page
-![SmartContactManagerHome.png](../../OneDrive/Pictures/saif/SmartContactManagerHome.png)
-
+![img_2.png](img_2.png)
 
 ### 👨‍💻 About Us Page
-![SmartContactManagerAboutUs.png](../../OneDrive/Pictures/saif/SmartContactManagerAboutUs.png)
+![img_3.png](img_3.png)
 
 ### 📩 Contact Us Page
-![SmartContactManagerContact.png](../../OneDrive/Pictures/saif/SmartContactManagerContact.png)
+![img_4.png](img_4.png)
 
 ### 📝 Sign Up Page
-![SmartContactManagerSignUp.png](../../OneDrive/Pictures/saif/SmartContactManagerSignUp.png)
+![img_5.png](img_5.png)
 
 ### 🔐 Sign In Page
-![SmartContactManagerLogin.png](../../OneDrive/Pictures/saif/SmartContactManagerLogin.png)
+![img_6.png](img_6.png)
 
